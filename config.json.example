@@ -1,0 +1,11 @@
+{
+  "sync_interval_seconds": 300,
+  "sync_full_interval_seconds": 3600,
+  "download_workers": 4,
+  "mappings": [
+    {
+      "immich": ["My Immich Album", "Another Immich Album"],
+      "gphoto": "My Google Photos Album"
+    }
+  ]
+}

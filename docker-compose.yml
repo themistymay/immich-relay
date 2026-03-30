@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  immich-relay:
+    build: .
+    container_name: immich-relay
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/data                        # token.json + sync_state.json (persistent)
+      - ./config.json:/app/config.json:ro   # album mappings + business config (read-only)
+    tmpfs:
+      - /tmp/sync_cache:size=2g,mode=1777   # ephemeral download cache (RAM)
+      - /tmp:size=100m,mode=1777
+    read_only: true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
