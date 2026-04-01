@@ -173,7 +173,7 @@ immich-relay accesses your Google Photos library via the Google Photos Library A
 
 Google user data is used solely to sync your Immich albums to your Google Photos library and for no other purpose. Photos are processed transiently and not retained after upload. Data obtained through the Google API is never transferred to third parties, used for advertising, or used for any purpose beyond the core sync functionality described above.
 
-This software's use of Google API data adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
+The use of information received from Google Photos APIs will adhere to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the [Limited Use requirements](https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes).
 
 See the full [Privacy Policy](https://immich-relay.themistymay.io/privacy) for details.
 

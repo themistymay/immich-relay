@@ -44,7 +44,7 @@ User data is used **solely** to perform the photo sync you have configured and a
 
 ## Google API Limited Use Compliance
 
-immich-relay's use and transfer of information received from Google APIs adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
+The use of information received from Google Photos APIs will adhere to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the [Limited Use requirements](https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes).
 
 Google user data obtained through the Photos Library API:
 
@@ -52,6 +52,7 @@ Google user data obtained through the Photos Library API:
 - Is **never** transferred or sold to third parties, advertising platforms, data brokers, or information resellers.
 - Is **never** used for serving ads, retargeting, or interest-based advertising.
 - Is **never** used to determine credit-worthiness or for lending purposes.
+- Is **never** used to create, train, or improve any machine learning or artificial intelligence model.
 - Is **never** read by humans except as required to investigate abuse, comply with applicable law, or with your explicit consent.
 
 ---
