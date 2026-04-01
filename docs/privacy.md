@@ -1,3 +1,8 @@
+---
+layout: default
+title: Privacy Policy
+---
+
 # Privacy Policy
 
 **Project:** immich-relay
@@ -49,6 +54,7 @@ immich-relay communicates with two external services **that you configure and au
 - **Google Photos API** — to upload media and manage albums in your Google account. This is governed by [Google's Privacy Policy](https://policies.google.com/privacy).
 
 The tool requests only the minimum Google Photos OAuth scopes required to function:
+
 - `photoslibrary.appendonly` — upload new media
 - `photoslibrary.edit.appcreateddata` — remove media the app uploaded
 - `photoslibrary.readonly.appcreateddata` — read media the app uploaded
@@ -65,7 +71,7 @@ This software is a developer tool intended for personal self-hosted use. It does
 
 ## Changes to This Policy
 
-If this policy is updated, the "Last updated" date at the top of this file will change. You can review the full history of changes in the [repository's commit log](https://github.com/themistymay/immich-relay/commits/main/PRIVACY.md).
+If this policy is updated, the "Last updated" date at the top of this file will change. You can review the full history of changes in the [repository's commit log](https://github.com/themistymay/immich-relay/commits/main/docs/privacy.md).
 
 ---
 

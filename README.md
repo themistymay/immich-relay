@@ -158,3 +158,10 @@ All other permissions should be left unchecked. The service is structurally read
 ## Resetting State
 
 Deleting `data/sync_state.json` causes the next sync cycle to treat all album pairs as new and perform a full re-sync. This is safe — no data is lost; the service will re-upload any assets not already in Google Photos.
+
+---
+
+## Legal
+
+- [Privacy Policy](https://immich-relay.themistymay.io/privacy)
+- [Terms of Service](https://immich-relay.themistymay.io/terms)

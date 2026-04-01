@@ -1,0 +1,11 @@
+theme: jekyll-theme-midnight
+title: immich-relay
+description: Sync curated Immich albums to Google Photos for family displays.
+url: "https://immich-relay.themistymay.io"
+
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: false

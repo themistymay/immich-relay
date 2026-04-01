@@ -1,3 +1,8 @@
+---
+layout: default
+title: Terms of Service
+---
+
 # Terms of Service
 
 **Project:** immich-relay
@@ -8,7 +13,7 @@
 
 ## 1. Nature of This Software
 
-immich-relay is free, open-source software licensed under the [Apache License, Version 2.0](LICENSE). It is provided as a self-hosted tool for personal use. There is no subscription, no account, no service agreement, and no commercial relationship between you and the project maintainer.
+immich-relay is free, open-source software licensed under the [Apache License, Version 2.0](https://github.com/themistymay/immich-relay/blob/main/LICENSE). It is provided as a self-hosted tool for personal use. There is no subscription, no account, no service agreement, and no commercial relationship between you and the project maintainer.
 
 By downloading, installing, or running this software, you agree to these terms.
 
@@ -16,7 +21,7 @@ By downloading, installing, or running this software, you agree to these terms.
 
 ## 2. License
 
-This software is licensed under the Apache License, Version 2.0. You may use, copy, modify, and distribute it in accordance with that license. The full license text is available in the [LICENSE](LICENSE) file.
+This software is licensed under the Apache License, Version 2.0. You may use, copy, modify, and distribute it in accordance with that license. The full license text is available in the [LICENSE](https://github.com/themistymay/immich-relay/blob/main/LICENSE) file.
 
 ---
 
@@ -56,7 +61,7 @@ This software interfaces with Google Photos and your Immich instance. Your use o
 
 ## 7. Changes to These Terms
 
-If these terms are updated, the "Last updated" date at the top of this file will change. You can review the full history of changes in the [repository's commit log](https://github.com/themistymay/immich-relay/commits/main/TERMS.md).
+If these terms are updated, the "Last updated" date at the top of this file will change. You can review the full history of changes in the [repository's commit log](https://github.com/themistymay/immich-relay/commits/main/docs/terms.md).
 
 ---
 
