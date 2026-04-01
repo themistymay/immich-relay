@@ -104,6 +104,11 @@ class StateManager:
                 "favorited_at": None,
             }
 
+    def update_gphoto_media_item_id(self, immich_asset_id: str, new_gphoto_id: str) -> None:
+        entry = self._state["assets"].get(immich_asset_id)
+        if entry is not None:
+            entry["gphoto_media_item_id"] = new_gphoto_id
+
     def record_removed_from_pair(self, immich_asset_id: str, pair_index: int) -> None:
         entry = self._state["assets"].get(immich_asset_id)
         if entry is None:

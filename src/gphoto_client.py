@@ -167,6 +167,17 @@ class GPhotoClient:
             )
         return item_result["mediaItem"]["id"]
 
+    def get_existing_media_item_ids(self, media_item_ids: list[str]) -> set[str]:
+        """Return the subset of IDs that still exist in the Google Photos library."""
+        existing: set[str] = set()
+        for chunk in _chunks(media_item_ids, _BATCH_LIMIT):
+            params = [("mediaItemIds", mid) for mid in chunk]
+            resp = self._get("/mediaItems:batchGet", params=params)
+            for result in resp.json().get("mediaItemResults", []):
+                if "mediaItem" in result:
+                    existing.add(result["mediaItem"]["id"])
+        return existing
+
     def add_to_album(self, album_id: str, media_item_ids: list[str]) -> None:
         if not media_item_ids:
             return

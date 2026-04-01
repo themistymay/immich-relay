@@ -259,15 +259,49 @@ def _sync_pair(
 
     # PROCESS RE-ADDITIONS
     if to_readd:
-        readd_gphoto_ids = [
-            state.get_gphoto_media_item_id(aid)
-            for aid in to_readd
-            if state.get_gphoto_media_item_id(aid)
+        candidate_gphoto_ids: list[str] = [
+            gid for aid in to_readd
+            if (gid := state.get_gphoto_media_item_id(aid)) is not None
         ]
-        if readd_gphoto_ids:
-            gphoto.add_to_album(gphoto_album_id, readd_gphoto_ids)
-            log.info("Pair %d: re-added %d assets removed from Google album.", pair_index, len(readd_gphoto_ids))
-            counters["readded"] += len(readd_gphoto_ids)
+        existing_in_library = gphoto.get_existing_media_item_ids(candidate_gphoto_ids) if candidate_gphoto_ids else set()
+
+        valid_readd_ids: list[str] = []
+        need_reupload: list[str] = []
+        for aid in to_readd:
+            gid = state.get_gphoto_media_item_id(aid)
+            if gid is not None and gid in existing_in_library:
+                valid_readd_ids.append(gid)
+            elif aid in immich_current_ids:
+                # Deleted from GPhoto entirely but still in Immich — re-upload
+                need_reupload.append(aid)
+
+        if valid_readd_ids:
+            gphoto.add_to_album(gphoto_album_id, valid_readd_ids)
+            log.info("Pair %d: re-added %d assets removed from Google album.", pair_index, len(valid_readd_ids))
+            counters["readded"] += len(valid_readd_ids)
+
+        if need_reupload:
+            log.info("Pair %d: %d assets deleted from GPhoto, re-uploading from Immich.", pair_index, len(need_reupload))
+            reupload_map: dict[str, str] = {}
+            with ThreadPoolExecutor(max_workers=download_workers) as executor:
+                futures = {executor.submit(_upload_one, aid): aid for aid in need_reupload}
+                for future in as_completed(futures):
+                    asset_id = futures[future]
+                    try:
+                        aid, gid = future.result()
+                        reupload_map[aid] = gid
+                    except Exception:
+                        log.error(
+                            "Pair %d: re-upload failed for asset %s:\n%s",
+                            pair_index, asset_id, traceback.format_exc(),
+                        )
+                        counters["errors"] += 1
+            if reupload_map:
+                gphoto.add_to_album(gphoto_album_id, list(reupload_map.values()))
+                for aid, gid in reupload_map.items():
+                    state.update_gphoto_media_item_id(aid, gid)
+                log.info("Pair %d: re-uploaded and re-added %d assets deleted from GPhoto.", pair_index, len(reupload_map))
+                counters["uploaded"] += len(reupload_map)
 
     # RECORD CHANGE DETECTION CURSOR
     state.set_last_album_updated_at(pair_index, album_updated_at)
