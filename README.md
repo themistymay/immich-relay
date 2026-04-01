@@ -161,6 +161,24 @@ Deleting `data/sync_state.json` causes the next sync cycle to treat all album pa
 
 ---
 
+## Privacy & Data
+
+immich-relay accesses your Google Photos library via the Google Photos Library API. The following scopes are requested:
+
+| Scope | Purpose |
+|---|---|
+| `photoslibrary.appendonly` | Upload photos synced from Immich |
+| `photoslibrary.edit.appcreateddata` | Remove photos that were deleted in Immich |
+| `photoslibrary.readonly.appcreateddata` | Check which photos the app has already uploaded |
+
+Google user data is used solely to sync your Immich albums to your Google Photos library and for no other purpose. Photos are processed transiently and not retained after upload. Data obtained through the Google API is never transferred to third parties, used for advertising, or used for any purpose beyond the core sync functionality described above.
+
+This software's use of Google API data adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
+
+See the full [Privacy Policy](https://immich-relay.themistymay.io/privacy) for details.
+
+---
+
 ## Legal
 
 - [Privacy Policy](https://immich-relay.themistymay.io/privacy)
